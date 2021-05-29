@@ -1,0 +1,13 @@
+#lang sicp
+(define (mul a b)
+  (mul-iter a b 0))
+(define (mul-iter a b result)
+  (cond ( (= b 0) result)
+        ( (even? b) (mul-iter (double a) (halve b) result))
+        ( else (mul-iter a (+ b -1) (+ a result)))))
+(define (even? x)
+  (= (remainder x 2) 0))
+(define (double x)
+  (* x 2))
+(define (halve x)
+  (/ x 2))

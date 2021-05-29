@@ -1,0 +1,13 @@
+#lang sicp
+(define (expt a n)
+  (expt-iter a n 1))
+(define (expt-iter a n result)
+  (cond ((= n 0) result)
+        ((even? n) (expt-iter (square a) (half n) result))
+        (else (expt-iter a (- n 1) (* result a)))))
+(define (even? n)
+  (= (remainder n 2) 0))
+(define (square n)
+  (* n n))
+(define (half n)
+  (/ n 2))

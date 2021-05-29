@@ -1,0 +1,16 @@
+#lang sicp
+(define tolerance 0.00001)
+(define (fixed-point f guess)
+  (define (good-enough? v1 v2)
+    (< (abs (- v1 v2)) tolerance))
+  (let ((next (f guess)))
+    (cond ((good-enough? guess next) next)
+          (else (display next)
+                (newline)
+                (fixed-point f next)))))
+
+(define (test guess)
+  (fixed-point (lambda (i)
+                 (/ (log 1000)
+                    (log i)))
+               guess))

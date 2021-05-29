@@ -1,0 +1,21 @@
+#lang sicp
+(define (cont-frac n d k)
+  (define (real-cont count)
+    (if (= count k)
+        (/ (n count) (d count))
+        (/ (n count)
+           (+ (d count) (real-cont (+ count 1))))))
+  (real-cont 1))
+
+(define (cont-frac-iter n d k)
+  (define (iter count result)
+    (cond ((< count 1) result)
+          (else (iter (- count 1)
+                      (/ (n count)
+                         (+ (d count) result))))))
+  (iter k 0))
+
+(define (golden-ratio times)
+  (cont-frac-iter (lambda (i) 1.0)
+                  (lambda (i) 1.0)
+                  times))
