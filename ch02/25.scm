@@ -1,6 +1,6 @@
 #lang sicp
 (define x (list 1 3 (list 5 7) 9))
-(car (cdr (cadr (cdr x))0))
+(cadr (cadr (cdr x)))
 
 (define y (list (list 7)))
 (car (car y))
